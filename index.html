@@ -1,0 +1,1272 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portofolio | Kenn</title>
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg-body: #f8fafc;
+        --bg-card: #ffffff;
+        --bg-header: #0f172a;
+        --bg-sidebar: #1e293b;
+        --bg-sidebar-active: rgba(56, 189, 248, 0.15);
+
+        --primary: #0284c7;
+        --primary-hover: #0369a1;
+        --accent: #38bdf8;
+
+        --text-main: #1e293b;
+        --text-muted: #64748b;
+        --text-light: #f8fafc;
+
+        --border: #e2e8f0;
+        --border-dark: #334155;
+
+        --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+        --shadow-md:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+
+        --radius: 10px;
+        --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Inter", "Segoe UI", sans-serif;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        background-color: var(--bg-body);
+        color: var(--text-main);
+        overflow-x: hidden;
+      }
+
+      header.top-bar {
+        background-color: var(--bg-header);
+        color: var(--text-light);
+        padding: 0.9rem 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        position: sticky;
+        top: 0;
+        z-index: 50;
+      }
+
+      .brand-group {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .brand-logo {
+        width: 38px;
+        height: 38px;
+        background: linear-gradient(135deg, var(--accent), var(--primary));
+        color: var(--bg-header);
+        font-weight: 800;
+        font-size: 1.2rem;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 10px rgba(56, 189, 248, 0.3);
+      }
+
+      .brand-title {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #ffffff;
+        letter-spacing: -0.02em;
+      }
+
+      .brand-subtitle {
+        font-size: 0.725rem;
+        color: #94a3b8;
+        display: block;
+      }
+
+      .mobile-menu-btn {
+        display: none;
+        background: transparent;
+        border: 1px solid var(--border-dark);
+        color: #ffffff;
+        padding: 0.4rem 0.75rem;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 1.1rem;
+      }
+
+      .app-container {
+        display: flex;
+        flex: 1;
+        position: relative;
+      }
+
+      aside.sidebar {
+        width: 250px;
+        background-color: var(--bg-sidebar);
+        color: var(--text-light);
+        padding: 1.5rem 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-right: 1px solid var(--border-dark);
+        transition: var(--transition);
+        z-index: 40;
+      }
+
+      .sidebar-section-title {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: #94a3b8;
+        margin-bottom: 0.85rem;
+        padding-left: 0.5rem;
+        font-weight: 700;
+      }
+
+      .sidebar-nav {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+
+      .sidebar-nav-item a {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.75rem 1rem;
+        color: #cbd5e1;
+        text-decoration: none;
+        border-radius: 8px;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: var(--transition);
+        border-left: 3px solid transparent;
+      }
+
+      .sidebar-nav-item a:hover {
+        background-color: rgba(255, 255, 255, 0.05);
+        color: var(--accent);
+      }
+
+      .sidebar-nav-item a.active {
+        background-color: var(--bg-sidebar-active);
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      .nav-icon {
+        font-size: 1.1rem;
+        width: 20px;
+        text-align: center;
+      }
+
+      .system-status {
+        padding: 0.85rem;
+        background: rgba(15, 23, 42, 0.6);
+        border: 1px solid var(--border-dark);
+        border-radius: 8px;
+        font-size: 0.75rem;
+        color: #94a3b8;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        background-color: #10b981;
+        border-radius: 50%;
+        box-shadow: 0 0 8px #10b981;
+        animation: pulse 2s infinite;
+      }
+
+      main.content-area {
+        flex: 1;
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        width: 100%;
+      }
+
+      .view-section {
+        display: none;
+        animation: fadeIn 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      .view-section.active {
+        display: block;
+      }
+
+      .section-header {
+        margin-bottom: 2rem;
+        border-bottom: 2px solid var(--border);
+        padding-bottom: 0.75rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
+      .section-header h1 {
+        font-size: 1.75rem;
+        font-weight: 800;
+        color: var(--text-main);
+        letter-spacing: -0.02em;
+      }
+
+      .section-header p {
+        font-size: 0.875rem;
+        color: var(--text-muted);
+        margin-top: 0.25rem;
+      }
+
+      /* Card & Grid Component Styles */
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .card {
+        background-color: var(--bg-card);
+        padding: 1.5rem;
+        border-radius: var(--radius);
+        border: 1px solid var(--border);
+        box-shadow: var(--shadow-sm);
+        transition: var(--transition);
+      }
+
+      .card:hover {
+        box-shadow: var(--shadow-md);
+        transform: translateY(-2px);
+        border-color: #cbd5e1;
+      }
+
+      .hero-banner {
+        background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+        color: #ffffff;
+        padding: 2.5rem 2rem;
+        border-radius: 12px;
+        margin-bottom: 2rem;
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-md);
+      }
+
+      .hero-badge {
+        display: inline-block;
+        padding: 0.3rem 0.75rem;
+        background: rgba(56, 189, 248, 0.15);
+        border: 1px solid rgba(56, 189, 248, 0.3);
+        color: var(--accent);
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .hero-title {
+        font-size: 2rem;
+        font-weight: 800;
+        margin-bottom: 0.75rem;
+        line-height: 1.25;
+      }
+
+      .hero-desc {
+        color: #94a3b8;
+        font-size: 0.95rem;
+        max-width: 650px;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 1rem;
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--border-dark);
+      }
+
+      .stat-box {
+        background: rgba(255, 255, 255, 0.03);
+        padding: 0.85rem;
+        border-radius: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+      }
+
+      .stat-number {
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: var(--accent);
+      }
+
+      .stat-label {
+        font-size: 0.75rem;
+        color: #94a3b8;
+      }
+
+      .biodata-grid {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 1.5rem;
+      }
+
+      .profile-card {
+        text-align: center;
+      }
+
+      .avatar-wrapper {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto 1rem;
+        background: linear-gradient(135deg, var(--primary), var(--accent));
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.2rem;
+        color: #ffffff;
+        font-weight: 700;
+        box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+      }
+
+      .profile-name {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--text-main);
+      }
+
+      .profile-role {
+        font-size: 0.8rem;
+        color: var(--primary);
+        font-weight: 600;
+        margin-top: 0.2rem;
+        margin-bottom: 1rem;
+      }
+
+      .bio-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.875rem;
+      }
+
+      .bio-table tr {
+        border-bottom: 1px solid var(--border);
+      }
+
+      .bio-table tr:last-child {
+        border-bottom: none;
+      }
+
+      .bio-table td {
+        padding: 0.85rem 0.5rem;
+      }
+
+      .bio-table td.label {
+        font-weight: 600;
+        color: var(--text-muted);
+        width: 35%;
+      }
+
+      .bio-table td.value {
+        color: var(--text-main);
+        font-weight: 500;
+      }
+
+      .skills-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+
+      .skill-bar-info {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 0.3rem;
+      }
+
+      .progress-bg {
+        height: 8px;
+        background: #e2e8f0;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: var(--primary);
+        border-radius: 10px;
+      }
+
+      .hoby-card {
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+
+      .hoby-icon {
+        width: 48px;
+        height: 48px;
+        background: rgba(2, 132, 199, 0.1);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        color: var(--primary);
+      }
+
+      .hoby-title {
+        font-size: 1.05rem;
+        font-weight: 700;
+      }
+
+      .hoby-desc {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        line-height: 1.5;
+      }
+
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1.25rem;
+      }
+
+      .gallery-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        overflow: hidden;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .gallery-card:hover {
+        transform: translateY(-4px);
+        box-shadow: var(--shadow-md);
+        border-color: var(--accent);
+      }
+
+      .gallery-thumb {
+        width: 100%;
+        height: 160px;
+        background-color: #e2e8f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        position: relative;
+      }
+
+      .gallery-info {
+        padding: 0.85rem;
+      }
+
+      .gallery-title {
+        font-size: 0.875rem;
+        font-weight: 700;
+        color: var(--text-main);
+      }
+
+      .gallery-tag {
+        font-size: 0.7rem;
+        color: var(--text-muted);
+        margin-top: 0.2rem;
+      }
+
+      /* Style Tambahan Tempat Foto Profil & Galeri Gambar */
+      .profile-photo-container {
+        position: relative;
+        width: 130px;
+        height: 130px;
+        margin: 0 auto 1.25rem;
+      }
+
+      .profile-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+        border: 4px solid var(--primary);
+        box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+      }
+
+      .photo-badge {
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
+        background: var(--primary);
+        color: #ffffff;
+        font-size: 0.65rem;
+        font-weight: 700;
+        padding: 0.25rem 0.6rem;
+        border-radius: 12px;
+        border: 2px solid var(--bg-card);
+      }
+
+      .photo-description {
+        background: #f8fafc;
+        border: 1px dashed var(--border);
+        padding: 0.85rem;
+        border-radius: 8px;
+        margin-top: 1rem;
+        text-align: left;
+        font-size: 0.8rem;
+      }
+
+      .photo-description p {
+        margin-bottom: 0.3rem;
+        color: var(--text-main);
+      }
+
+      .photo-description code {
+        background: #e2e8f0;
+        padding: 0.1rem 0.3rem;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 0.75rem;
+      }
+
+      .gallery-thumb-box {
+        position: relative;
+        width: 100%;
+        height: 170px;
+        overflow: hidden;
+        background-color: #f1f5f9;
+      }
+
+      .gallery-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+      }
+
+      .gallery-card:hover .gallery-img {
+        transform: scale(1.05);
+      }
+
+      .gallery-category-badge {
+        position: absolute;
+        top: 0.75rem;
+        right: 0.75rem;
+        background: rgba(15, 23, 42, 0.8);
+        backdrop-filter: blur(4px);
+        color: #ffffff;
+        font-size: 0.65rem;
+        font-weight: 600;
+        padding: 0.25rem 0.6rem;
+        border-radius: 6px;
+      }
+
+      .gallery-desc {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        margin-top: 0.35rem;
+        line-height: 1.45;
+      }
+
+      .modal-preview-box {
+        width: 100%;
+        max-height: 280px;
+        border-radius: 8px;
+        overflow: hidden;
+        margin-bottom: 1rem;
+        background: #0f172a;
+      }
+
+      .modal-img-preview {
+        width: 100%;
+        height: 100%;
+        max-height: 280px;
+        object-fit: cover;
+      }
+
+      /* Modal Image Viewer */
+      .modal-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.85);
+        backdrop-filter: blur(4px);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        pointer-events: none;
+        transition: var(--transition);
+        padding: 1rem;
+      }
+
+      .modal-overlay.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .modal-content {
+        background: var(--bg-card);
+        padding: 1.5rem;
+        border-radius: 12px;
+        max-width: 500px;
+        width: 100%;
+        text-align: center;
+      }
+
+      .modal-preview {
+        width: 100%;
+        height: 220px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 4rem;
+        margin-bottom: 1rem;
+      }
+
+      footer.app-footer {
+        background-color: var(--bg-header);
+        color: #94a3b8;
+        text-align: center;
+        padding: 1.25rem 1rem;
+        font-size: 0.825rem;
+        border-top: 1px solid var(--border-dark);
+        margin-top: auto;
+      }
+
+      footer .author {
+        color: var(--accent);
+        font-weight: 600;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.4;
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(6px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive Breakdown */
+      @media (max-width: 850px) {
+        .biodata-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .mobile-menu-btn {
+          display: block;
+        }
+
+        aside.sidebar {
+          position: fixed;
+          left: -260px;
+          top: 60px;
+          bottom: 0;
+          box-shadow: var(--shadow-lg);
+        }
+
+        aside.sidebar.open {
+          left: 0;
+        }
+
+        main.content-area {
+          padding: 1.25rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Nav Atas (Hanya Logo & Judul, Tanpa Link Navigasi) -->
+    <header class="top-bar">
+      <div class="brand-group">
+        <div class="brand-logo">K</div>
+        <div>
+          <span class="brand-title">Kenn Portfolio</span>
+          <span class="brand-subtitle">Kenn | Web & Tech Space</span>
+        </div>
+      </div>
+
+      <!-- Tombol Toggle Mobile untuk Sidebar -->
+      <button
+        class="mobile-menu-btn"
+        onclick="toggleSidebar()"
+        aria-label="Toggle Sidebar"
+      >
+        ☰ Menu
+      </button>
+    </header>
+
+    <!-- Container Utama dengan Sidenav -->
+    <div class="app-container">
+      <!-- Sidebar Navigation (Digunakan sebagai Navigasi Utama) -->
+      <aside class="sidebar" id="sidebar">
+        <div>
+          <div class="sidebar-section-title">NAVIGASI UTAMA</div>
+          <ul class="sidebar-nav">
+            <li class="sidebar-nav-item">
+              <a href="#home" class="active" onclick="switchTab('home', event)">
+                <span>HOME</span>
+              </a>
+            </li>
+            <li class="sidebar-nav-item">
+              <a href="#biodata" onclick="switchTab('biodata', event)">
+                <span>BIODATA</span>
+              </a>
+            </li>
+            <li class="sidebar-nav-item">
+              <a href="#hoby" onclick="switchTab('hoby', event)">
+                <span>HOBY</span>
+              </a>
+            </li>
+            <li class="sidebar-nav-item">
+              <a href="#gambar" onclick="switchTab('gambar', event)">
+                <span>GAMBAR</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </aside>
+
+      <!-- Area Konten Utama -->
+      <main class="content-area">
+        <!-- ================= 1. HALAMAN HOME ================= -->
+        <section id="home" class="view-section active">
+          <div class="hero-banner">
+            <span class="hero-badge">⚡ PORTFOLIO DASHBOARD</span>
+            <h1 class="hero-title">Selamat Datang di Web Kennard</h1>
+            <p class="hero-desc">
+              Ini adalah platform portofolio personal yang memuat profil,
+              informasi biodata, hobi, dan galeri karya. Gunakan menu di
+              <strong>Sidebar Sebelah Kiri</strong> untuk membuka seksi halaman.
+            </p>
+
+            <div class="hero-stats">
+              <div class="stat-box">
+                <div class="stat-number">4</div>
+                <div class="stat-label">Seksi Utama Sidebar</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Desain Responsive</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-number">2026</div>
+                <div class="stat-label">Updated Year</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-header">
+            <div>
+              <h2>Ringkasan Fitur Web</h2>
+              <p>Menu cepat untuk menjelajahi area dashboard</p>
+            </div>
+          </div>
+
+          <div class="cards-grid">
+            <div class="card">
+              <h3 style="margin-bottom: 0.5rem; color: var(--primary)">
+                👤 Profil & Biodata
+              </h3>
+              <p
+                style="
+                  font-size: 0.875rem;
+                  color: var(--text-muted);
+                  line-height: 1.5;
+                "
+              >
+                Berisi data pribadi lengkap, latar belakang pendidikan, serta
+                keahlian teknis.
+              </p>
+            </div>
+            <div class="card">
+              <h3 style="margin-bottom: 0.5rem; color: var(--primary)">
+                🎯 Hobi & Minat
+              </h3>
+              <p
+                style="
+                  font-size: 0.875rem;
+                  color: var(--text-muted);
+                  line-height: 1.5;
+                "
+              >
+                Daftar aktivitas favorit yang ditekuni dalam mengisi waktu luang
+                dan pengembangan diri.
+              </p>
+            </div>
+            <div class="card">
+              <h3 style="margin-bottom: 0.5rem; color: var(--primary)">
+                Galeri Gambar
+              </h3>
+              <p
+                style="
+                  font-size: 0.875rem;
+                  color: var(--text-muted);
+                  line-height: 1.5;
+                "
+              >
+                Kumpulan dokumentasi visual dan gambar ilustrasi interaktif
+                dengan fitur pratinjau.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 2. HALAMAN BIODATA ================= -->
+        <section id="biodata" class="view-section">
+          <div class="section-header">
+            <div>
+              <h1>Biodata Diri</h1>
+              <p>Informasi profil dan latar belakang personal</p>
+            </div>
+          </div>
+
+          <div class="biodata-grid">
+            <!-- Card Foto Profile dengan Bingkai & Penjelasan -->
+            <div class="card profile-card">
+              <div class="profile-photo-container">
+                <img
+                  id="profile-img-preview"
+                  src="Profile.jpeg"
+                  alt="Foto Profil Kenn"
+                  class="profile-img"
+                />
+                <div class="photo-badge">Profil</div>
+              </div>
+
+              <div class="profile-name">Kennard</div>
+              <div class="profile-role">Student & Tech Enthusiast</div>
+            </div>
+
+            <!-- Card Detail Tabel Biodata -->
+            <div class="card">
+              <h3
+                style="
+                  margin-bottom: 1rem;
+                  border-bottom: 1px solid var(--border);
+                  padding-bottom: 0.5rem;
+                "
+              >
+                Informasi Detail
+              </h3>
+              <table class="bio-table">
+                <tr>
+                  <td class="label">Nama Lengkap</td>
+                  <td class="value">Shafwan Kennard Kumara</td>
+                </tr>
+                <tr>
+                  <td class="label">Domisili</td>
+                  <td class="value">Surakarta, Jawa Tengah</td>
+                </tr>
+                <tr>
+                  <td class="label">Pendidikan / Status</td>
+                  <td class="value">Siswa SMK 9 SURAKARTA</td>
+                </tr>
+                <tr>
+                  <td class="label">Bidang Minat</td>
+                  <td class="value">Web Development & Network Basic</td>
+                </tr>
+                <tr>
+                  <td class="label">Bahasa</td>
+                  <td class="value">Bahasa Indonesia, English (Basic)</td>
+                </tr>
+                <tr>
+                  <td class="label">My Web</td>
+                  <td class="value">
+                    <a
+                      href="https://portofolio-knardd.vercel.app/"
+                      target="_blank"
+                    >
+                      Kunjungi Website
+                    </a>
+                  </td>
+                </tr>
+              </table>
+
+              <h3
+                style="
+                  margin-top: 1.5rem;
+                  margin-bottom: 0.75rem;
+                  border-bottom: 1px solid var(--border);
+                  padding-bottom: 0.5rem;
+                "
+              >
+                Keahlian Dasar
+              </h3>
+              <div class="skills-wrapper">
+                <div>
+                  <div class="skill-bar-info">
+                    <span>HTML5 & CSS3 Native</span>
+                    <span>88%</span>
+                  </div>
+                  <div class="progress-bg">
+                    <div class="progress-fill" style="width: 88%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="skill-bar-info">
+                    <span>JavaScript & Logic</span>
+                    <span>75%</span>
+                  </div>
+                  <div class="progress-bg">
+                    <div class="progress-fill" style="width: 75%"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="skill-bar-info">
+                    <span>Computer & Network Basics</span>
+                    <span>82%</span>
+                  </div>
+                  <div class="progress-bg">
+                    <div class="progress-fill" style="width: 82%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 3. HALAMAN HOBY ================= -->
+        <section id="hoby" class="view-section">
+          <div class="section-header">
+            <div>
+              <h1>Hobi & Minat</h1>
+              <p>Aktivitas yang rutin dilakukan</p>
+            </div>
+          </div>
+
+          <div class="cards-grid">
+            <div class="card hoby-card">
+              <div class="hoby-icon">💻</div>
+              <h3 class="hoby-title">Coding & Web Design</h3>
+              <p class="hoby-desc">
+                Eksplorasi pembuatan tampilan website dengan HTML, CSS Native,
+                serta mempelajari pembuatan aplikasi web interaktif.
+              </p>
+            </div>
+
+            <div class="card hoby-card">
+              <div class="hoby-icon">🌐</div>
+              <h3 class="hoby-title">Eksplorasi Jaringan</h3>
+              <p class="hoby-desc">
+                Mempelajari dasar-dasar jaringan komputer, simulator router,
+                serta bagaimana data dikirimkan melalui internet.
+              </p>
+            </div>
+
+            <div class="card hoby-card">
+              <div class="hoby-icon">📚</div>
+              <h3 class="hoby-title">Membaca & Belajar Hal Baru</h3>
+              <p class="hoby-desc">
+                Gemar membaca artikel seputar perkembangan teknologi, tutorial
+                pengembangan software, dan dokumentasi teknis.
+              </p>
+            </div>
+
+            <div class="card hoby-card">
+              <div class="hoby-icon">🎧</div>
+              <h3 class="hoby-title">Mendengarkan Musik</h3>
+              <p class="hoby-desc">
+                Mendengarkan musik favorit untuk menemani waktu fokus saat
+                sedang mengerjakan tugas.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= 4. HALAMAN GAMBAR ================= -->
+        <section id="gambar" class="view-section">
+          <div class="section-header">
+            <div>
+              <h1>Galeri Gambar</h1>
+              <p>
+                Kumpulan dokumentasi foto, proyek, dan karya dengan judul serta
+                penjelasan lengkap
+              </p>
+            </div>
+          </div>
+
+          <div class="gallery-grid">
+            <!-- Item Gambar 1 -->
+            <div
+              class="gallery-card"
+              onclick="
+                openModal(
+                  'simulasi jaringan.jpeg',
+                  'Simulasi Jaringan',
+                  'Perancangan dan simulasi topologi jaringan komputer skala kecil menggunakan Cisco Packet Tracer untuk menguji routing dan konektivitas antarnode.',
+                  '#0284c7',
+                )
+              "
+            >
+              <div class="gallery-thumb-box">
+                <img
+                  src="simulasi jaringan.jpeg"
+                  alt="Simulasi Jaringan"
+                  class="gallery-img"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/600x400/0284c7/ffffff?text=Simulasi+Jaringan'
+                  "
+                />
+                <span class="gallery-category-badge">Jaringan</span>
+              </div>
+              <div class="gallery-info">
+                <h3 class="gallery-title">Simulasi Jaringan</h3>
+                <p class="gallery-desc">
+                  Simulasi topologi dan skema pengalamatan IP skala lokal.
+                </p>
+              </div>
+            </div>
+            <!-- Item Gambar 2 -->
+            <div
+              class="gallery-card"
+              onclick="
+                openModal(
+                  'grafana.jpeg',
+                  'Monitoring Jaringan',
+                  'Implementasi dashboard pemantauan jaringan interaktif menggunakan Grafana untuk memvisualisasikan lalu lintas data, penggunaan bandwidth, latensi, dan status perangkat secara real-time.',
+                  '#0d9488',
+                )
+              "
+            >
+              <div class="gallery-thumb-box">
+                <img
+                  src="grafana.jpeg"
+                  alt="Monitoring Jaringan"
+                  class="gallery-img"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/600x400/0d9488/ffffff?text=Monitoring+Jaringan'
+                  "
+                />
+                <span class="gallery-category-badge">Jaringan</span>
+              </div>
+              <div class="gallery-info">
+                <h3 class="gallery-title">Monitoring Jaringan</h3>
+                <p class="gallery-desc">
+                  Visualisasi metrik performa jaringan secara real-time.
+                </p>
+              </div>
+            </div>
+            <!-- Item Gambar 3 -->
+            <div
+              class="gallery-card"
+              onclick="
+                openModal(
+                  'nmap.jpg',
+                  'Pengujian Port Scan (Nmap)',
+                  'Proses analisis dan pemindaian keamanan jaringan menggunakan Nmap untuk mengidentifikasi port yang terbuka, mendeteksi layanan yang berjalan, serta mengevaluasi potensi celah kerentanan pada sistem target.',
+                  '#4f46e5',
+                )
+              "
+            >
+              <div class="gallery-thumb-box">
+                <img
+                  src="nmap.jpg"
+                  alt="Port Scan Nmap"
+                  class="gallery-img"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/600x400/4f46e5/ffffff?text=Port+Scanning'
+                  "
+                />
+                <span class="gallery-category-badge">Security</span>
+              </div>
+              <div class="gallery-info">
+                <h3 class="gallery-title">Pengujian Port Scan (Nmap)</h3>
+                <p class="gallery-desc">
+                  Pemindaian port dan analisis kerentanan jaringan berbasis CLI.
+                </p>
+              </div>
+            </div>
+            <!-- Item Gambar 4 -->
+            <div
+              class="gallery-card"
+              onclick="
+                openModal(
+                  'makan.jpeg',
+                  'Makan Nasi Ayam Geprek',
+                  'Dokumentasi kegiatan kebersamaan dan momen santai menikmati sajian kuliner nasi ayam geprek setelah menyelesaikan rangkaian proyek dan aktivitas teknis.',
+                  '#d97706',
+                )
+              "
+            >
+              <div class="gallery-thumb-box">
+                <img
+                  src="makan.jpeg"
+                  alt="Makan Nasi Ayam Geprek"
+                  class="gallery-img"
+                  onerror="
+                    this.src =
+                      'https://placehold.co/600x400/d97706/ffffff?text=Kuliner+Geprek'
+                  "
+                />
+                <span class="gallery-category-badge">Kegiatan</span>
+              </div>
+              <div class="gallery-info">
+                <h3 class="gallery-title">Makan Nasi Ayam Geprek</h3>
+                <p class="gallery-desc">
+                  Momen kebersamaan dan istirahat menikmati sajian kuliner
+                  lokal.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Modal Dialog Preview Gambar -->
+    <div class="modal-overlay" id="gallery-modal">
+      <div class="modal-content">
+        <div class="modal-preview-box">
+          <img
+            id="modal-img"
+            src=""
+            alt="Preview Gambar"
+            class="modal-img-preview"
+            onerror="
+              this.src =
+                'https://placehold.co/600x350/1e293b/ffffff?text=Gambar+Tidak+Tersedia'
+            "
+          />
+        </div>
+        <h3
+          id="modal-title"
+          style="margin-bottom: 0.5rem; color: var(--text-main)"
+        >
+          Detail Gambar
+        </h3>
+        <p
+          id="modal-desc"
+          style="
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+          "
+        >
+          Ini adalah pratinjau gambar ilustrasi dari seksi galeri portofolio.
+        </p>
+        <button
+          onclick="closeModal()"
+          style="
+            background: var(--primary);
+            color: #ffffff;
+            border: none;
+            padding: 0.6rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+          "
+        >
+          Tutup Preview
+        </button>
+      </div>
+    </div>
+
+    <!-- Footer Website -->
+    <footer class="app-footer">
+      &copy; 2026. Portofolio oleh <span class="author">Kenn</span>. All rights
+      reserved.
+    </footer>
+
+    <script>
+      // Fungsi Pengalih Halaman / Seksi via Sidebar
+      function switchTab(targetId, event) {
+        if (event) event.preventDefault();
+
+        // Sembunyikan semua seksi
+        const sections = document.querySelectorAll(".view-section");
+        sections.forEach((sec) => sec.classList.remove("active"));
+
+        // Tampilkan seksi target
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+          targetSection.classList.add("active");
+        }
+
+        // Update status tombol active di sidebar
+        const navLinks = document.querySelectorAll(".sidebar-nav-item a");
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${targetId}`) {
+            link.classList.add("active");
+          }
+        });
+
+        // Tutup sidebar di perangkat seluler setelah memilih menu
+        document.getElementById("sidebar").classList.remove("open");
+
+        // Scroll ke paling atas konten
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+
+      // Toggle Sidebar Mobile
+      function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.classList.toggle("open");
+      }
+
+      // Modal Gambar System
+      function openModal(imgSrc, title, description) {
+        const modal = document.getElementById("gallery-modal");
+        const modalImg = document.getElementById("modal-img");
+        const modalTitle = document.getElementById("modal-title");
+        const modalDesc = document.getElementById("modal-desc");
+
+        modalImg.src = imgSrc;
+        modalTitle.textContent = title;
+        modalDesc.textContent = description || "Penjelasan detail gambar.";
+
+        modal.classList.add("open");
+      }
+
+      function closeModal() {
+        document.getElementById("gallery-modal").classList.remove("open");
+      }
+    </script>
+  </body>
+</html>
